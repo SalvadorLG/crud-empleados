@@ -1,13 +1,18 @@
 const express = require('express');
 const app = express();
 var db = require("./database.js");
+const cors = require('cors');
 
+const config = require('./config');
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const PORT = 8000;
 const HOST = '0.0.0.0';
+
+app.use( cors({ origin: true, credentials: true  }) );
+
 
 app.get('/', (req, res) => {
     res.send('Hello world');
